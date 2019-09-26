@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             tvResultado.text = ""
         }
     }
-    //Funciones buscador web
+    //Funciones buscador
     fun constructorUri(authority: String): Uri {
         val constructor = Uri.Builder()
         constructor.scheme("https")
