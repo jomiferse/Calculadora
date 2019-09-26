@@ -17,24 +17,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btUno.setOnClickListener { appendOnExpression("1", true) }
-        btDos.setOnClickListener { appendOnExpression("2", true) }
-        btTres.setOnClickListener { appendOnExpression("3", true) }
-        btCuatro.setOnClickListener { appendOnExpression("4", true) }
-        btCinco.setOnClickListener { appendOnExpression("5", true) }
-        btSeis.setOnClickListener { appendOnExpression("6", true) }
-        btSiete.setOnClickListener { appendOnExpression("7", true) }
-        btOcho.setOnClickListener { appendOnExpression("8", true) }
-        btNueve.setOnClickListener { appendOnExpression("9", true) }
-        btCero.setOnClickListener { appendOnExpression("0", true) }
-        btPunto.setOnClickListener { appendOnExpression(".", true) }
+        btUno.setOnClickListener { funcionExpresion("1", true) }
+        btDos.setOnClickListener { funcionExpresion("2", true) }
+        btTres.setOnClickListener { funcionExpresion("3", true) }
+        btCuatro.setOnClickListener { funcionExpresion("4", true) }
+        btCinco.setOnClickListener { funcionExpresion("5", true) }
+        btSeis.setOnClickListener { funcionExpresion("6", true) }
+        btSiete.setOnClickListener { funcionExpresion("7", true) }
+        btOcho.setOnClickListener { funcionExpresion("8", true) }
+        btNueve.setOnClickListener { funcionExpresion("9", true) }
+        btCero.setOnClickListener { funcionExpresion("0", true) }
+        btPunto.setOnClickListener { funcionExpresion(".", true) }
 
-        btSuma.setOnClickListener { appendOnExpression("+", false) }
-        btResta.setOnClickListener { appendOnExpression("-", false) }
-        btMultiplicar.setOnClickListener { appendOnExpression("*", false) }
-        btDividir.setOnClickListener { appendOnExpression("/", false) }
-        btParentesisIZQ.setOnClickListener { appendOnExpression("(", false) }
-        btParentesisDE.setOnClickListener { appendOnExpression(")", false) }
+        btSuma.setOnClickListener { funcionExpresion("+", false) }
+        btResta.setOnClickListener { funcionExpresion("-", false) }
+        btMultiplicar.setOnClickListener { funcionExpresion("*", false) }
+        btDividir.setOnClickListener { funcionExpresion("/", false) }
+        btParentesisIZQ.setOnClickListener { funcionExpresion("(", false) }
+        btParentesisDE.setOnClickListener { funcionExpresion(")", false) }
 
         var memoria=0;
 
@@ -77,6 +77,8 @@ class MainActivity : AppCompatActivity() {
                 tvExpresion.setText(memoria.toString())
                 tvResultado.setText("")
             } else {
+                tvExpresion.setText(memoria.toString())
+                tvResultado.setText("")
                 Toast.makeText(this, "Número en memoria: " + memoria, Toast.LENGTH_SHORT).show()
             }
         }
@@ -97,18 +99,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun appendOnExpression(string: String, canClear: Boolean) {
+    fun funcionExpresion(texto: String, limpiar: Boolean) {
 
         if(tvResultado.text.isNotEmpty()){
             tvExpresion.text = ""
         }
 
-        if (canClear) {
+        if (limpiar) {
             tvResultado.text = ""
-            tvExpresion.append(string)
+            tvExpresion.append(texto)
         } else {
             tvExpresion.append(tvResultado.text)
-            tvExpresion.append(string)
+            tvExpresion.append(texto)
             tvResultado.text = ""
         }
     }
