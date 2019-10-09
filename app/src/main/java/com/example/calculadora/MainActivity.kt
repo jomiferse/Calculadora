@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                         tvResultado.text = resultado.toString()
 
                 }catch (e:Exception){
-                    Log.d("Exception"," message : " + e.message )
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -105,21 +105,26 @@ class MainActivity : AppCompatActivity() {
         }
         else {
 
-            var memoriaWeb = "";
+            urlBuscador.setLines(1);
 
             ibtBuscar.setOnClickListener() {
                 cargarWeb()
-                memoriaWeb = urlBuscador.text.toString();
             }
 
             ibtRecargar.setOnClickListener() {
-                val uri: Uri
-                try {
-                    uri = constructorUri(memoriaWeb)
-                    wvWeb.loadUrl(uri.toString())
-                } catch (e: UnsupportedOperationException) {
-                    Log.d("Exception"," message : " + e.message )
-                }
+                wvWeb.reload();
+                wvWeb.scrollTo(0,0);
+
+            }
+
+            ibtAvanzar.setOnClickListener() {
+                wvWeb.goForward();
+                urlBuscador.setText(wvWeb.originalUrl.toString());
+            }
+
+            ibtRetroceder.setOnClickListener() {
+                wvWeb.goBack();
+                urlBuscador.setText(wvWeb.originalUrl.toString());
             }
         }
 
