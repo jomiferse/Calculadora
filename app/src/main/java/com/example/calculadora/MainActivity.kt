@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                         tvResultado.text = resultado.toString()
 
                 }catch (e:Exception){
-                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error al calcular", Toast.LENGTH_SHORT).show()
                 }
             }
 
